@@ -2,6 +2,8 @@
 
 This repository contains the implementation and deployment materials for coordinated multi-park integrated-energy-system optimization using ADMM, Hyperledger Fabric chaincode, and Mask-KKT verification.
 
+The study decomposes the centralized problem into local park subproblems and an on-chain global coordination problem, enabling trustworthy on-chain/off-chain coordination for multi-park integrated energy systems.
+
 ## Repository layout
 
 - `chaincode/`: Go smart contracts for ADMM coordination, masking, auditing, and settlement.
