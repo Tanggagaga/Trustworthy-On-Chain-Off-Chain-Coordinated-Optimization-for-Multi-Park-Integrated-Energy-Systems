@@ -1,0 +1,10 @@
+PeerOrgs:
+  - Name: Park3
+    Domain: park3.energy.com
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+      SANS:
+        - localhost
+    Users:
+      Count: 1

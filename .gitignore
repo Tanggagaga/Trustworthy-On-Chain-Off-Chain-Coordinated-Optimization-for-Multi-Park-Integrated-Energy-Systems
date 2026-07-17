@@ -1,0 +1,23 @@
+# Local runtime and diagnostic artifacts
+*.log
+*.pid
+__pycache__/
+*.py[cod]
+.pytest_cache/
+chaincode/chaincode
+network/prometheus-grafana/grafana_db/
+
+# Local dependency and environment directories
+node_modules/
+.venv/
+venv/
+
+# Editor and operating-system metadata
+.DS_Store
+Thumbs.db
+
+# Fabric identities and TLS private keys must never be committed.
+network/organizations/**/keystore/
+network/organizations/**/tls/*.key
+network/organizations/**/ca/priv_sk
+network/organizations/**/tlsca/priv_sk
