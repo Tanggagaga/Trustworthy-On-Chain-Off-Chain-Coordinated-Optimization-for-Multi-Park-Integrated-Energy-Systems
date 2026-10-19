@@ -17,7 +17,7 @@ EXP-1 Level-3：错误对偶变量攻击（变体 B）
     以及失败量级，证明"单条件洗白"策略对四条联合约束无效。
 
 scheduleID 前缀：9994-M7E-（严格隔离，不复用 M7A/B/C/D）
-输出目录：/mnt/c/Users/Lenovo/Desktop/daima/综合能源/作恶MaskKKT专属/L3/
+输出目录：results/L3/
 """
 
 import json, os, sys, time, uuid
@@ -41,8 +41,8 @@ ATTACK_SOLVER    = "Park2"
 ATTACK_FROM_ITER = 10
 
 ALL_3      = ["Park1", "Park2", "Park3"]
-BUNDLE_DIR = "/mnt/c/Users/Lenovo/Desktop/daima/综合能源/链下上传信任/M1a离线Mask验证/M6完整闭环"
-OUT_DIR    = "/mnt/c/Users/Lenovo/Desktop/daima/综合能源/作恶MaskKKT专属/L3"
+BUNDLE_DIR = os.environ.get("MASK_BUNDLE_DIR", os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "mask")))
+OUT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "results", "L3"))
 CHUNK_CHARS = 50_000
 
 os.makedirs(OUT_DIR, exist_ok=True)

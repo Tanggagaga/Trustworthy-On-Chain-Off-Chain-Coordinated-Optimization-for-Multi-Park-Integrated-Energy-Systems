@@ -19,7 +19,7 @@ L4-B：活跃集截断对偶攻击
     预期：CS PASS，stationarity FAIL。
 
 scheduleID 前缀：9994-M7F-（严格隔离，不复用 M7A~M7E）
-输出目录：/mnt/c/Users/Lenovo/Desktop/daima/综合能源/作恶MaskKKT专属/L4/
+输出目录：results/L4/
 """
 
 import json, os, sys, time, uuid
@@ -43,8 +43,8 @@ ATTACK_SOLVER    = "Park2"
 ATTACK_FROM_ITER = 10
 
 ALL_3      = ["Park1", "Park2", "Park3"]
-BUNDLE_DIR = "/mnt/c/Users/Lenovo/Desktop/daima/综合能源/链下上传信任/M1a离线Mask验证/M6完整闭环"
-OUT_DIR    = "/mnt/c/Users/Lenovo/Desktop/daima/综合能源/作恶MaskKKT专属/L4"
+BUNDLE_DIR = os.environ.get("MASK_BUNDLE_DIR", os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "mask")))
+OUT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "results", "L4"))
 CHUNK_CHARS = 50_000
 ACTIVE_TOL  = 1e-4   # 活跃约束判定阈值（scaled 单位）
 

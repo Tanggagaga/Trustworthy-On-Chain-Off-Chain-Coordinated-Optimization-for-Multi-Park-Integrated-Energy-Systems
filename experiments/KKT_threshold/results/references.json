@@ -1,0 +1,41 @@
+[
+  {
+    "park": 1,
+    "status": "solved",
+    "iterations": 1525,
+    "objective": -547.0453606587158,
+    "stationarity": 1.647650174982255e-11,
+    "primal_violation": 1.1368683772161603e-13,
+    "dual_violation": 0.0,
+    "complementarity": 1.2790280165831302e-13,
+    "hessian_min_eigenvalue": -6.102510905688772e-06,
+    "HE0_vs_EtE_spectral_difference": 1.1726109154154876e-05,
+    "lp_status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)"
+  },
+  {
+    "park": 2,
+    "status": "solved",
+    "iterations": 2200,
+    "objective": -465.00705675055474,
+    "stationarity": 1.3723762588164092e-11,
+    "primal_violation": 1.7053025658242404e-13,
+    "dual_violation": 0.0,
+    "complementarity": 1.9183924526395884e-13,
+    "hessian_min_eigenvalue": -7.0376870553310354e-06,
+    "HE0_vs_EtE_spectral_difference": 1.200735625198025e-05,
+    "lp_status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)"
+  },
+  {
+    "park": 3,
+    "status": "solved",
+    "iterations": 4525,
+    "objective": -97.39003642715016,
+    "stationarity": 1.6580084667545896e-12,
+    "primal_violation": 1.1546319456101628e-14,
+    "dual_violation": 0.0,
+    "complementarity": 6.4295436715156874e-15,
+    "hessian_min_eigenvalue": -6.281175781511502e-06,
+    "HE0_vs_EtE_spectral_difference": 1.0117082225737944e-05,
+    "lp_status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)"
+  }
+]

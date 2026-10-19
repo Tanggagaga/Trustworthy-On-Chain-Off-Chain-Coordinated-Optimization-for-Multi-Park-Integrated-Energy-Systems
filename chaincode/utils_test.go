@@ -38,7 +38,7 @@ func TestComputeZUpdateUsesCorrectLambdaRhoScale(t *testing.T) {
 		{0},
 	}
 
-	z, err := computeZUpdate(e, lambda, 10000) // rho=1
+	z, err := computeZUpdate3Park(e, lambda, 10000) // rho=1
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -68,7 +68,7 @@ func TestComputeZUpdateTwoTimeSteps(t *testing.T) {
 		{10000, 0},
 	}
 
-	z, err := computeZUpdate(e, lambda, 10000)
+	z, err := computeZUpdate3Park(e, lambda, 10000)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -121,7 +121,9 @@ func TestComputePrimalResidSq(t *testing.T) {
 		{1000, -500},
 	}
 
-	got, err := computePrimalResidSq(e, z)
+	// 现签名是四能源成对输入且形状无关：其余三对用零矩阵占位，贡献为 0。
+	zero := [][]int64{{0}}
+	got, err := computePrimalResidSq(e, z, zero, zero, zero, zero, zero, zero)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -142,7 +144,8 @@ func TestComputeDualResidSqIncludesRhoScale(t *testing.T) {
 	// rho=2: dualResid = 20000×1414/10000 = 2828 → dualResidSq = 2828² = 7,997,584
 	// (small difference from exact 2,000,000 / 8,000,000 is integer-sqrt truncation)
 
-	gotRho1, err := computeDualResidSq(zNew, zOld, 10000)
+	zero := [][]int64{{0}}
+	gotRho1, err := computeDualResidSq(zNew, zOld, zero, zero, zero, zero, zero, zero, 10000)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -151,7 +154,7 @@ func TestComputeDualResidSqIncludesRhoScale(t *testing.T) {
 		t.Fatalf("dual rho=1 got %d, expected ~1999396", gotRho1)
 	}
 
-	gotRho2, err := computeDualResidSq(zNew, zOld, 20000)
+	gotRho2, err := computeDualResidSq(zNew, zOld, zero, zero, zero, zero, zero, zero, 20000)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -165,7 +168,8 @@ func TestDualResidSmallRho(t *testing.T) {
 	zNew := [][]int64{{1000}, {-1000}}
 	// rho=0.5 (rhoScaled=5000) — was zero with the old code due to integer underflow.
 	// Fix: isqrt(2,000,000)=1414, dualResid=5000×1414/10000=707, dualResidSq=707²=499849
-	got, err := computeDualResidSq(zNew, zOld, 5000)
+	zero := [][]int64{{0}}
+	got, err := computeDualResidSq(zNew, zOld, zero, zero, zero, zero, zero, zero, 5000)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -183,7 +187,8 @@ func TestDualResidVerySmallRho(t *testing.T) {
 	zNew := [][]int64{{1000}, {-1000}}
 	// rho=0.0625 (rhoScaled=625) — smallest value seen in MATLAB iteration history.
 	// isqrt(2,000,000)=1414, dualResid=625×1414/10000=88, dualResidSq=88²=7744
-	got, err := computeDualResidSq(zNew, zOld, 625)
+	zero := [][]int64{{0}}
+	got, err := computeDualResidSq(zNew, zOld, zero, zero, zero, zero, zero, zero, 625)
 	if err != nil {
 		t.Fatal(err)
 	}

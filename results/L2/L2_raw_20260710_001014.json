@@ -1,0 +1,56 @@
+{
+  "experiment": "EXP-1-L2-FeasibleNonOpt",
+  "attack_type": "lambda0_local_only",
+  "kkt_tol": 10000,
+  "mask_scale": 1000000,
+  "attack_result": {
+    "iter": 13,
+    "attack_level": "L2",
+    "attack_type": "feasible_nonopt_lambda0",
+    "park": "Park1",
+    "solver": "Park2",
+    "verifier": "Park3",
+    "k0": 220,
+    "rho": 0.5,
+    "lam_block_norm": 9.8094,
+    "z_block_norm": 13.4182,
+    "y_star_0": 7.771018,
+    "y_star_norm": 235.555937,
+    "baseline_stat": 1155,
+    "baseline_compl": 21,
+    "baseline_pass": true,
+    "y_L2_0": 3.757596,
+    "y_L2_norm": 211.634879,
+    "delta_y_0": -4.013423,
+    "delta_y_norm": 51.048438,
+    "relative_err": 0.216715,
+    "n_constraint_viol": 0,
+    "min_slack": -0.0,
+    "kkt_pass": false,
+    "stat_res": 4663395,
+    "compl_res": 11,
+    "stat_over_tol": 466.34,
+    "solution_hash": "774c0b08942cbfb6b55fd8330ff46ffe85c4fe630409eac179ab7bdb7fa26f8c",
+    "solve_credit_after": 100,
+    "credit_before": {
+      "Park1": 100,
+      "Park2": 100,
+      "Park3": 100
+    },
+    "credit_after_all": {
+      "Park1": 100,
+      "Park2": 100,
+      "Park3": 100
+    },
+    "scheduleID": "SCHEDULE_9994-M7D-20260710-000225-L2-9ec4",
+    "credits_init": {
+      "Park1": 100,
+      "Park2": 92,
+      "Park3": 100
+    },
+    "coord_step_blocked": true,
+    "coord_error": "invoke ADMMCoordinationContract:CoordinateStep failed\nstdout: \nstderr: Error: endorsement failure during invoke. response: status:500 message:\"missing iteration record for Park1 iter 13: state ITER_SCHEDULE_9994-M7D-20260710-000225-L2-9ec4_13_Park1 not found\"",
+    "iter_record_exists": false
+  },
+  "normal_iters": 41
+}

@@ -1,0 +1,23 @@
+{
+  "inputs_match": true,
+  "original_block_optimum": 1086.9911188943158,
+  "central_max_violation": 5.6843418860808015E-14,
+  "stored_cost_recomputed": 1087.2165962069894,
+  "stored_local_max_violation": 2.0342838524811668E-10,
+  "stored_global_max_violation_MW": 0.12358460591109832,
+  "stored_primal_residual": 0.086628631745502435,
+  "stored_iterations": 47,
+  "fixed_z_recovery_status": 12,
+  "fixed_z_recovery_info": "Either infeasible or unbounded (<a href=\"yalmip.github.io/infeasibleorunbounded\">learn to debug</a>) (GUROBI)",
+  "fixed_z_recovery_cost": null,
+  "fixed_z_recovery_max_violation": null,
+  "fixed_z_diagnosis_status": 1,
+  "fixed_z_diagnosis_info": "Infeasible problem (<a href=\"yalmip.github.io/debugginginfeasible\">learn to debug</a>) (GUROBI)",
+  "z_bound_violation_MW": 0.0025547427319061455,
+  "minimum_total_exchange_adjustment": 0.0070594495646341127,
+  "extra_repair_cost": 1087.0571917603613,
+  "extra_repair_max_violation": 8.43769498715119E-15,
+  "replay_iterations": 47,
+  "replay_cost": 1087.2165962102654,
+  "replay_history_max_difference": 0
+}

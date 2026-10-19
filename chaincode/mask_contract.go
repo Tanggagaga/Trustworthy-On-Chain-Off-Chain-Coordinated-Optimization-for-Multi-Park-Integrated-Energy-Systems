@@ -14,8 +14,10 @@ import (
 //	注册 → 分配求解/验证方 → 求解方提交masked解 → 验证方提交KKT裁决
 //	→ 通过则链码自己反解e_m并复用现有容量/拓扑校验写入IterationRecord。
 //
-// KKT校验本身在链下完成（独立verifier，复用M3.5的定点逻辑），链码不做
-// 矩阵运算，只做：维度/哈希校验、身份校验、e_m反解（轻量矩阵向量乘）。
+// M7起，KKT四条件改由链码定点复算（kkt_onchain.go 的 computeKKTOnChain），
+// 经背书策略多方独立执行、读写集一致后写入账本；验证方自报的裁决只作对照，
+// 与复算结论不一致时记VERDICT_MISMATCH异常。链码此前只做维度/哈希/身份
+// 校验和e_m反解，"验证方单点可信"是当时明确的信任缺口，本版本予以消除。
 type MaskCoordinationContract struct {
 	contractapi.Contract
 }
@@ -423,7 +425,18 @@ func (c *MaskCoordinationContract) SubmitMaskedSolution(
 // ── RecordVerdict ──────────────────────────────────────────────────────────────
 // 必须是被分配的verifier提交；solutionHash必须跟链上已存的提交一致
 // （验证方不能凭空报一个裁决，裁决必须绑定到链上确实存在的那一份y,mu）；
-// 不允许重复提交裁决。通过则反解e_m并复用现有容量/拓扑校验写入IterationRecord，
+// 不允许重复提交裁决。
+//
+// M7起，KKT四条件由链码用注册mask常量和本轮ADMMState定点复算
+// （computeKKTOnChain），写入账本的Pass和残差一律以链码复算值为准；
+// 验证方自报的三元组只作为对照存档，自报结论与复算结论不一致时给验证方
+// 记VERDICT_MISMATCH异常——验证方谎报PASS（与求解方合谋洗白）或谎报FAIL
+// （陷害求解方）都改变不了最终裁决，只会暴露自己。复算依赖本轮(ρ,λ,z)，
+// 因此裁决必须发生在本轮CoordinateStep之前（状态DISPATCHING且iter为当前轮）；
+// 这与原来pass路径里recoverAndRecordExchange的检查是同一约束，现在提前到
+// 两条路径共用。
+//
+// 通过则反解e_m并复用现有容量/拓扑校验写入IterationRecord，
 // 不通过则只记录裁决，不写IterationRecord——CoordinateStep本身已经要求
 // 三园区记录齐全才能往下走（readIterationRecords用getRequiredJSON强制），
 // 所以这里不需要额外再加"不允许CoordinateStep继续"的逻辑，现有约束已经满足。
@@ -463,16 +476,51 @@ func (c *MaskCoordinationContract) RecordVerdict(
 		return fmt.Errorf("verdict already recorded for %s iter %d", parkID, iter)
 	}
 
+	// ── 链码定点复算 KKT ───────────────────────────────────────────────────
+	state, err := readADMMState(ctx, scheduleID)
+	if err != nil {
+		return err
+	}
+	if state.Status != StatusDispatching {
+		return fmt.Errorf("schedule %s status is %s, not %s", scheduleID, state.Status, StatusDispatching)
+	}
+	if iter != state.Iter {
+		return fmt.Errorf("iteration mismatch: got %d want %d", iter, state.Iter)
+	}
+	parkIdx, err := parkIndex(parkID)
+	if err != nil {
+		return err
+	}
+	mask, err := readMask(ctx, scheduleID, parkID)
+	if err != nil {
+		return err
+	}
+	chainRes, err := computeKKTOnChain(mask, state, parkIdx, solution.YScaled, solution.MuScaled)
+	if err != nil {
+		return err
+	}
+
+	if pass != chainRes.Pass {
+		_ = recordAnomaly(ctx, assignment.VerifierParkID, scheduleID, "VERDICT_MISMATCH",
+			fmt.Sprintf("iter %d park %s: verifier reported pass=%v, on-chain recompute pass=%v (stat=%d compl=%d primalOK=%v dualOK=%v)",
+				iter, parkID, pass, chainRes.Pass, chainRes.StatRes, chainRes.ComplRes, chainRes.PrimalOK, chainRes.DualOK))
+	}
+
 	verdict := Verdict{
 		ScheduleID:            scheduleID,
 		Iter:                  iter,
 		ParkID:                parkID,
 		VerifierParkID:        assignment.VerifierParkID,
 		SolutionHash:          solutionHash,
-		Pass:                  pass,
-		StationarityResScaled: stationarityResScaled,
-		ComplementResScaled:   complementResScaled,
-		Timestamp:             txTimestamp(ctx),
+		Pass:                  chainRes.Pass,
+		StationarityResScaled: chainRes.StatRes,
+		ComplementResScaled:   chainRes.ComplRes,
+
+		ReportedPass:                  pass,
+		ReportedStationarityResScaled: stationarityResScaled,
+		ReportedComplementResScaled:   complementResScaled,
+
+		Timestamp: txTimestamp(ctx),
 	}
 	if err := putJSON(ctx, vKey, &verdict); err != nil {
 		return err
@@ -480,10 +528,10 @@ func (c *MaskCoordinationContract) RecordVerdict(
 
 	// 求解信用分是独立账本，跟数据信用分(updateCreditScore)完全分开记账：
 	// Park2帮Park1解题解错了，扣的是Park2的求解信用，绝不牵连Park1的数据信用。
-	if !pass {
+	if !chainRes.Pass {
 		_ = recordAnomaly(ctx, assignment.SolverParkID, scheduleID, "KKT_VERIFICATION_FAILED",
 			fmt.Sprintf("iter %d park %d solver %s: stationarityRes=%d complementRes=%d",
-				iter, mustParkIndex(parkID), assignment.SolverParkID, stationarityResScaled, complementResScaled))
+				iter, mustParkIndex(parkID), assignment.SolverParkID, chainRes.StatRes, chainRes.ComplRes))
 		_ = updateSolveCreditScore(ctx, assignment.SolverParkID, solveFailPenalty)
 		return setEvent(ctx, "VerdictRecorded", map[string]any{
 			"scheduleId": scheduleID, "iter": iter, "parkId": parkID, "pass": false,

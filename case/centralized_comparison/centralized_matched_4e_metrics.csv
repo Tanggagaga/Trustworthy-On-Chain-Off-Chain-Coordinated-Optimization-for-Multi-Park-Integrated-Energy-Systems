@@ -1,0 +1,2 @@
+centralized_objective,global_E_residual,global_G_residual,global_C_residual,global_H_residual,max_local_E_residual,max_local_G_residual,max_local_H_residual,max_local_C_residual
+1086.99111889432,0,6.66133814775094e-16,0,0,3.5527136788005e-15,1.4210854715202e-14,1.77635683940025e-15,8.88178419700125e-16

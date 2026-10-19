@@ -14,7 +14,7 @@ EXP-1 Level-2：可行非最优解攻击
     试图让自己园区的用能成本最低而不承担能量平衡责任。
 
 scheduleID 前缀：9994-M7D-（严格隔离，不得复用 M7A/M7B/M7C）
-输出目录：/mnt/c/Users/Lenovo/Desktop/daima/综合能源/作恶MaskKKT专属/L2/
+输出目录：results/L2/
 """
 
 import json, math, os, sys, time, uuid
@@ -38,8 +38,8 @@ ATTACK_FROM_ITER = 10          # 稳定阶段触发
 RNG_SEED         = 42
 
 ALL_3      = ["Park1", "Park2", "Park3"]
-BUNDLE_DIR = "/mnt/c/Users/Lenovo/Desktop/daima/综合能源/链下上传信任/M1a离线Mask验证/M6完整闭环"
-OUT_DIR    = "/mnt/c/Users/Lenovo/Desktop/daima/综合能源/作恶MaskKKT专属/L2"
+BUNDLE_DIR = os.environ.get("MASK_BUNDLE_DIR", os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "mask")))
+OUT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "results", "L2"))
 CHUNK_CHARS = 50_000
 
 os.makedirs(OUT_DIR, exist_ok=True)

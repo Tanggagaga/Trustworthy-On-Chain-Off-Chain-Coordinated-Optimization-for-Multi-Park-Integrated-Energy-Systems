@@ -1,0 +1,11 @@
+﻿line,energy_type,from_park,to_park,min_flow,max_flow,loss_rate,note
+E_12,electric,park1_commercial_integrated,park2_industrial_waste_heat,-8.0,8.0,0.0,bidirectional electric tie; Park2 usually imports
+E_13,electric,park1_commercial_integrated,park3_wind_p2g_export,-10.0,10.0,0.0,bidirectional electric tie; Park3 usually exports to Park1
+E_23,electric,park2_industrial_waste_heat,park3_wind_p2g_export,-12.0,12.0,0.0,bidirectional electric tie; negative means Park3 supplies Park2
+G_12,gas,park1_commercial_integrated,park2_industrial_waste_heat,-3.0,3.0,0.01,small gas balancing line
+G_13,gas,park1_commercial_integrated,park3_wind_p2g_export,-4.0,4.0,0.01,gas balancing between Park1 and P2G park
+G_23,gas,park2_industrial_waste_heat,park3_wind_p2g_export,-10.0,10.0,0.01,main gas line; negative means Park3 P2G gas supplies Park2
+H_12,heat,park1_commercial_integrated,park2_industrial_waste_heat,-9.0,9.0,0.03,only heat tie; industrial process waste heat and CHP recoverable heat from Park2 supply Park1
+C_12,cooling,park1_commercial_integrated,park2_industrial_waste_heat,-2.0,2.0,0.05,short-distance chilled-water balancing line
+C_13,cooling,park1_commercial_integrated,park3_wind_p2g_export,-4.0,4.0,0.05,Park3 can lightly export wind-driven cooling to Park1
+C_23,cooling,park2_industrial_waste_heat,park3_wind_p2g_export,-2.0,2.0,0.05,small chilled-water balancing line

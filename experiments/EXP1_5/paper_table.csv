@@ -1,0 +1,3 @@
+﻿scenario,iter,owner,solver,verifier,reported_pass,onchain_pass,onchain_stationarity_scaled,onchain_complement_scaled,iteration_record_exists,coordination_advanced,mismatch_anomaly_this_case
+A_honest_candidate_false_FAIL,1,Park1,Park3,Park2,False,True,94,19,True,True,1
+B_feasible_nonoptimal_false_PASS,2,Park1,Park2,Park3,True,False,4278798,14,False,False,1

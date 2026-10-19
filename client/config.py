@@ -6,10 +6,15 @@
 import os
 
 # ── 基础路径 ─────────────────────────────────────────────────────────
+# 本发布包只附配置模板。运行链上实验时须指向本地部署的网络及其证书。
 HOME         = os.path.expanduser("~")
-NETWORK_DIR  = os.path.join(HOME, "fabric-workspace", "energy-dispatch", "network")
-FAB_BIN      = os.path.join(HOME, "fabric-workspace", "fabric-samples", "bin")
-CFG_PATH     = os.path.join(HOME, "fabric-workspace", "energy-dispatch", "config")
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+NETWORK_DIR  = os.environ.get("ENERGY_DISPATCH_NETWORK_DIR",
+                            os.path.join(PROJECT_ROOT, "network"))
+FAB_BIN      = os.environ.get("FABRIC_BIN",
+                            os.path.join(HOME, "fabric-workspace", "fabric-samples", "bin"))
+CFG_PATH     = os.environ.get("FABRIC_CFG_PATH",
+                            os.path.join(PROJECT_ROOT, "config"))
 
 ORDERER_CA   = os.path.join(
     NETWORK_DIR,

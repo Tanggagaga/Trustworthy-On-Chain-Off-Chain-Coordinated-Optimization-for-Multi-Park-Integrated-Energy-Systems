@@ -15,7 +15,7 @@ EXP-1 Level-1：小扰动敏感度测试
     → SOLVE_CREDIT[Park2] -10 / CoordinateStep 被阻断
 
 scheduleID 前缀：9994-M7C-（严格隔离，不得复用 9994-M7A- / 9994-M7B-）
-输出目录：/mnt/c/Users/Lenovo/Desktop/daima/综合能源/作恶MaskKKT专属/L1/
+输出目录：results/L1/
 """
 
 import json, math, os, sys, time, uuid, random
@@ -40,8 +40,8 @@ NOISE_LEVELS     = [0.01, 0.03, 0.05]   # 三档：1% / 3% / 5%
 RNG_SEED         = 42
 
 ALL_3      = ["Park1", "Park2", "Park3"]
-BUNDLE_DIR = "/mnt/c/Users/Lenovo/Desktop/daima/综合能源/链下上传信任/M1a离线Mask验证/M6完整闭环"
-OUT_DIR    = "/mnt/c/Users/Lenovo/Desktop/daima/综合能源/作恶MaskKKT专属/L1"
+BUNDLE_DIR = os.environ.get("MASK_BUNDLE_DIR", os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "mask")))
+OUT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "results", "L1"))
 CHUNK_CHARS = 50_000
 
 os.makedirs(OUT_DIR, exist_ok=True)

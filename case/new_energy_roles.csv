@@ -1,0 +1,5 @@
+﻿energy_type,park1_commercial_integrated,park2_industrial_waste_heat,park3_wind_p2g_export
+electric,balanced / mild sink,net sink,net source
+gas,balanced,net sink from Park3 P2G,net source through P2G
+heat,net sink from Park2 waste heat,net source to Park1,not connected to heat network
+cooling,balanced,mostly self-supplied,light source via wind-driven electric chiller

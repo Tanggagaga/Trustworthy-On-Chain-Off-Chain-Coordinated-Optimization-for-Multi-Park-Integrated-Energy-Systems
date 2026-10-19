@@ -34,7 +34,7 @@ from preheat_chaincode_peers import preheat_org
 from masked_solver import build_masked_round, solve_masked_qp, check_kkt_scaled, MASK_SCALE
 
 ALL_PARK_ENDORSERS = ["Park1", "Park2", "Park3"]
-BUNDLE_DIR = "/mnt/c/Users/Lenovo/Desktop/daima/综合能源/链下上传信任/M1a离线Mask验证/M6完整闭环"
+BUNDLE_DIR = os.environ.get("MASK_BUNDLE_DIR", os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "mask")))
 CHUNK_CHARS = 50_000
 
 

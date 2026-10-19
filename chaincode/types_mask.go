@@ -4,8 +4,9 @@ package main
 //
 // 整体流程见 链下上传信任/第一版逻辑实现清单.md 的 M4 节。
 // 设计原则：
-//   1. KKT 校验留在链下（独立verifier，复用M3.5已验证过的定点逻辑），
-//      链上只记录 PASS/FAIL 裁决，不在链码里跑大矩阵的KKT校验运算。
+//   1. （M7修订）KKT 四条件由链码定点复算（kkt_onchain.go），裁决以链码
+//      复算值为准；验证方自报值仅作对照存档。M4-M6 期间 KKT 留在链下、
+//      链上只记自报裁决，"验证方单点可信"是已识别的信任缺口，本版本消除。
 //   2. e_m 永远由链码自己用已注册的公开量 E_rows,x0_e 和提交的 y* 算出来，
 //      不信任任何一方自报的 e_m。
 //   3. 求解方(solver)、验证方(verifier)、数据方(parkID，子问题所有者)
@@ -59,7 +60,10 @@ type MaskedSolution struct {
 	Timestamp    string `json:"timestamp"`
 }
 
-// Verdict 是验证方提交的KKT校验裁决。
+// Verdict 是一轮masked解的KKT裁决记录。
+// M7起 Pass/StationarityResScaled/ComplementResScaled 是链码定点复算的
+// 权威值；Reported* 三个字段存验证方自报的对照值，二者结论不一致时
+// 链码另记 VERDICT_MISMATCH 异常（见 RecordVerdict）。
 type Verdict struct {
 	ScheduleID     string `json:"scheduleId"`
 	Iter           int    `json:"iter"`
@@ -71,6 +75,10 @@ type Verdict struct {
 	Pass                  bool  `json:"pass"`
 	StationarityResScaled int64 `json:"stationarityResScaled"`
 	ComplementResScaled   int64 `json:"complementResScaled"`
+
+	ReportedPass                  bool  `json:"reportedPass"`
+	ReportedStationarityResScaled int64 `json:"reportedStationarityResScaled"`
+	ReportedComplementResScaled   int64 `json:"reportedComplementResScaled"`
 
 	Timestamp string `json:"timestamp"`
 }

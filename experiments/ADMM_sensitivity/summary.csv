@@ -1,0 +1,2 @@
+id,rho0,mu,tau,eps,converged,iterations,primal,dual,operating_cost,max_exchange_mismatch,max_global_balance_error,rho_min_seen,rho_max_seen,rho_bound_hits,elapsed_seconds
+A01,1,10,2,0.1,1,47,0.0866286317455024,0.0400397325167696,1087.21659621027,0.0411948686370334,0.123584605911098,0.125,1,0,286.7654369

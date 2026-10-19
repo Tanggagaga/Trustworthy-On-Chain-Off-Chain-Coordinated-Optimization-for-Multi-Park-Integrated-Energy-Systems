@@ -1,0 +1,5 @@
+Method,Cost,SignedDifference,RelativeDifferencePct,MaxConstraintViolation
+Centralized (same original blocks),1086.99111889432,0,0,5.6843418860808e-14
+Stored ADMM at iteration 47,1087.21659620699,0.225477312673547,0.0207432525210419,0.123584605911098
+Fixed-z recovery (infeasible),NaN,NaN,NaN,NaN
+Minimum exchange adjustment recovery (additional centralized postprocessing),1087.05719176036,0.0660728660454879,0.00607851020095703,8.43769498715119e-15

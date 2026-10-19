@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "scheduleID": "SCHEDULE_9994-COLRECHECK-20261017-111841-V15-5510",
+  "endorsed_package": "energy_2.6:8058ba9127bc215592555ba0d51c620f3307633a687a658892eebafe9103d974",
+  "normal_verdict_count": 7,
+  "false_report_count": 2,
+  "scenario_A": {
+    "reported_pass": false,
+    "onchain_pass": true,
+    "onchain_stationarity": 94,
+    "iteration_record_exists": true,
+    "coordination_advanced": true
+  },
+  "scenario_B": {
+    "reported_pass": true,
+    "onchain_pass": false,
+    "onchain_stationarity": 4278798,
+    "max_primal_violation": 6.447359996997193e-07,
+    "iteration_record_exists": false,
+    "coordination_blocked": true,
+    "state_unchanged": true
+  },
+  "anomalies": {
+    "1": "iter 1 park Park1: verifier reported pass=false, on-chain recompute pass=true (stat=94 compl=19 primalOK=true dualOK=true)",
+    "2": "iter 2 park Park1: verifier reported pass=true, on-chain recompute pass=false (stat=4278798 compl=14 primalOK=true dualOK=true)"
+  },
+  "scope": "Two application-client false-report scenarios; does not test colluding endorsing peers."
+}

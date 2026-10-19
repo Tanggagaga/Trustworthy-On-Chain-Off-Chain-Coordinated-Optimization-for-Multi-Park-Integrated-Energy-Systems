@@ -1,0 +1,53 @@
+{
+  "experiment": "EXP-1.5-VerifierLying",
+  "chaincode": "energy v2.6 (on-chain KKT recompute)",
+  "scheduleID": "SCHEDULE_9994-COLRECHECK-20261017-111841-V15-5510",
+  "kkt_tol": 10000,
+  "mask_scale": 1000000,
+  "results": {
+    "A": {
+      "scenario": "A_frame_honest_solver",
+      "iter": 1,
+      "solver": "Park3",
+      "verifier": "Park2",
+      "reported_pass": false,
+      "reported_stat": 99999999,
+      "reported_compl": 99999999,
+      "chain_pass": true,
+      "chain_stat": 94,
+      "chain_compl": 19,
+      "verdict_reported_pass_field": false,
+      "iter_record_exists": true,
+      "verifier_mismatch_anomalies": 1,
+      "solver_credit_before": 100,
+      "solver_credit_after": 100,
+      "offchain_honest_stat": 69,
+      "offchain_honest_compl": 19,
+      "coordinate_step_ok": true
+    },
+    "B": {
+      "scenario": "B_collude_whitewash_bad_solution",
+      "iter": 2,
+      "solver": "Park2",
+      "verifier": "Park3",
+      "reported_pass": true,
+      "reported_stat": 1000,
+      "reported_compl": 10,
+      "chain_pass": false,
+      "chain_stat": 4278798,
+      "chain_compl": 14,
+      "verdict_reported_pass_field": true,
+      "iter_record_exists": false,
+      "verifier_mismatch_anomalies": 1,
+      "solver_credit_before": 94,
+      "solver_credit_after": 84,
+      "coordinate_step_blocked": true,
+      "coord_error": "invoke ADMMCoordinationContract:CoordinateStep failed\nstdout: \nstderr: Error: endorsement failure during invoke. response: status:500 message:\"missing iteration record for Park1 iter 2: state ITER_SCHEDULE_9994-COLRECHECK-20261017-111841-V15-5510_2_Park1 not found\""
+    },
+    "summary": {
+      "scenario_A_defended": true,
+      "scenario_B_defended": true,
+      "conclusion": "Tested false reports did not override on-chain acceptance; matching anomalies recorded"
+    }
+  }
+}

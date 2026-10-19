@@ -46,7 +46,7 @@ DOWN_PARK    = "Park2"
 DOWN_PEER    = "peer0.park2.energy.com"
 ALL_3        = ["Park1", "Park2", "Park3"]
 TWO_ALIVE    = ["Park1", "Park3"]
-BUNDLE_DIR   = "/mnt/c/Users/Lenovo/Desktop/daima/综合能源/链下上传信任/M1a离线Mask验证/M6完整闭环"
+BUNDLE_DIR = os.environ.get("MASK_BUNDLE_DIR", os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "mask")))
 CHUNK_CHARS  = 50_000
 
 schedule_id_ref = [None]   # 全局，供 solve_one_park 访问
@@ -450,7 +450,7 @@ def run(max_iters: int = 100):
 
     # 保存 Excel
     out_wsl = os.path.join(os.path.dirname(__file__), "EXP3_fault_tolerance.xlsx")
-    out_win = "/mnt/c/Users/Lenovo/Desktop/daima/综合能源/作恶/EXP3_fault_tolerance.xlsx"
+    out_win = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "results", "EXP3_fault_tolerance.xlsx"))
     with pd.ExcelWriter(out_wsl, engine="openpyxl") as writer:
         pd.DataFrame(chain_rows).to_excel(writer, sheet_name="chain_per_iter", index=False)
         pd.DataFrame(park_rows).to_excel(writer, sheet_name="park_detail", index=False)

@@ -45,7 +45,7 @@ from masked_solver import build_masked_round, solve_masked_qp, check_kkt_scaled,
 
 # ── 常量 ───────────────────────────────────────────────────────────────────────
 ALL_3      = ["Park1", "Park2", "Park3"]
-BUNDLE_DIR = "/mnt/c/Users/Lenovo/Desktop/daima/综合能源/链下上传信任/M1a离线Mask验证/M6完整闭环"
+BUNDLE_DIR = os.environ.get("MASK_BUNDLE_DIR", os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "mask")))
 CHUNK_CHARS = 50_000
 
 FAKE_HASH = "0000000000000000000000000000000000000000000000000000000000000000"
@@ -432,7 +432,7 @@ def run():
         })
 
     out_wsl = os.path.join(os.path.dirname(__file__), "EXP2_immutability.xlsx")
-    out_win = "/mnt/c/Users/Lenovo/Desktop/daima/综合能源/作恶/EXP2_immutability.xlsx"
+    out_win = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "results", "EXP2_immutability.xlsx"))
     with pd.ExcelWriter(out_wsl, engine="openpyxl") as writer:
         pd.DataFrame(attack_rows).to_excel(writer, sheet_name="attack_results", index=False)
         pd.DataFrame(integrity_rows).to_excel(writer, sheet_name="integrity_check", index=False)

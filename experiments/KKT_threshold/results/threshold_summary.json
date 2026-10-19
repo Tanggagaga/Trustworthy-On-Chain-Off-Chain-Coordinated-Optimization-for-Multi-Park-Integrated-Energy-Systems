@@ -1,0 +1,194 @@
+[
+  {
+    "threshold": 1000,
+    "kind": "feasible_convex_interpolation",
+    "total": 87,
+    "accepted": 13,
+    "max_objective_difference_accepted": 0.0013774793250718176,
+    "max_float_primal_violation_accepted": 7.76428999316181e-07
+  },
+  {
+    "threshold": 1000,
+    "kind": "negative_multiplier_only",
+    "total": 63,
+    "accepted": 31,
+    "max_objective_difference_accepted": 1.8032586694971542e-06,
+    "max_float_primal_violation_accepted": 7.875149918845636e-07
+  },
+  {
+    "threshold": 1000,
+    "kind": "normal_numerical_solution",
+    "total": 3,
+    "accepted": 3,
+    "max_objective_difference_accepted": 1.8032586694971542e-06,
+    "max_float_primal_violation_accepted": 7.875149918845636e-07
+  },
+  {
+    "threshold": 1000,
+    "kind": "primal_direction_perturbation",
+    "total": 63,
+    "accepted": 38,
+    "max_objective_difference_accepted": 0.0003153536952140712,
+    "max_float_primal_violation_accepted": 0.00023364601999809054
+  },
+  {
+    "threshold": 2000,
+    "kind": "feasible_convex_interpolation",
+    "total": 87,
+    "accepted": 14,
+    "max_objective_difference_accepted": 0.002449740381933907,
+    "max_float_primal_violation_accepted": 7.76428999316181e-07
+  },
+  {
+    "threshold": 2000,
+    "kind": "negative_multiplier_only",
+    "total": 63,
+    "accepted": 34,
+    "max_objective_difference_accepted": 1.8032586694971542e-06,
+    "max_float_primal_violation_accepted": 7.875149918845636e-07
+  },
+  {
+    "threshold": 2000,
+    "kind": "normal_numerical_solution",
+    "total": 3,
+    "accepted": 3,
+    "max_objective_difference_accepted": 1.8032586694971542e-06,
+    "max_float_primal_violation_accepted": 7.875149918845636e-07
+  },
+  {
+    "threshold": 2000,
+    "kind": "primal_direction_perturbation",
+    "total": 63,
+    "accepted": 42,
+    "max_objective_difference_accepted": 0.0009990635628582822,
+    "max_float_primal_violation_accepted": 0.0004435814190077991
+  },
+  {
+    "threshold": 5000,
+    "kind": "feasible_convex_interpolation",
+    "total": 87,
+    "accepted": 16,
+    "max_objective_difference_accepted": 0.007753250712283943,
+    "max_float_primal_violation_accepted": 7.76428999316181e-07
+  },
+  {
+    "threshold": 5000,
+    "kind": "negative_multiplier_only",
+    "total": 63,
+    "accepted": 39,
+    "max_objective_difference_accepted": 1.8032586694971542e-06,
+    "max_float_primal_violation_accepted": 7.875149918845636e-07
+  },
+  {
+    "threshold": 5000,
+    "kind": "normal_numerical_solution",
+    "total": 3,
+    "accepted": 3,
+    "max_objective_difference_accepted": 1.8032586694971542e-06,
+    "max_float_primal_violation_accepted": 7.875149918845636e-07
+  },
+  {
+    "threshold": 5000,
+    "kind": "primal_direction_perturbation",
+    "total": 63,
+    "accepted": 47,
+    "max_objective_difference_accepted": 0.001774594382595751,
+    "max_float_primal_violation_accepted": 0.0013161564609998067
+  },
+  {
+    "threshold": 10000,
+    "kind": "feasible_convex_interpolation",
+    "total": 87,
+    "accepted": 17,
+    "max_objective_difference_accepted": 0.013798270421943926,
+    "max_float_primal_violation_accepted": 7.76428999316181e-07
+  },
+  {
+    "threshold": 10000,
+    "kind": "negative_multiplier_only",
+    "total": 63,
+    "accepted": 43,
+    "max_objective_difference_accepted": 1.8032586694971542e-06,
+    "max_float_primal_violation_accepted": 7.875149918845636e-07
+  },
+  {
+    "threshold": 10000,
+    "kind": "normal_numerical_solution",
+    "total": 3,
+    "accepted": 3,
+    "max_objective_difference_accepted": 1.8032586694971542e-06,
+    "max_float_primal_violation_accepted": 7.875149918845636e-07
+  },
+  {
+    "threshold": 10000,
+    "kind": "primal_direction_perturbation",
+    "total": 63,
+    "accepted": 50,
+    "max_objective_difference_accepted": 0.003160261945936327,
+    "max_float_primal_violation_accepted": 0.0023401040130011097
+  },
+  {
+    "threshold": 20000,
+    "kind": "feasible_convex_interpolation",
+    "total": 87,
+    "accepted": 18,
+    "max_objective_difference_accepted": 0.024570724933255406,
+    "max_float_primal_violation_accepted": 7.76428999316181e-07
+  },
+  {
+    "threshold": 20000,
+    "kind": "negative_multiplier_only",
+    "total": 63,
+    "accepted": 46,
+    "max_objective_difference_accepted": 1.8032586694971542e-06,
+    "max_float_primal_violation_accepted": 7.875149918845636e-07
+  },
+  {
+    "threshold": 20000,
+    "kind": "normal_numerical_solution",
+    "total": 3,
+    "accepted": 3,
+    "max_objective_difference_accepted": 1.8032586694971542e-06,
+    "max_float_primal_violation_accepted": 7.875149918845636e-07
+  },
+  {
+    "threshold": 20000,
+    "kind": "primal_direction_perturbation",
+    "total": 63,
+    "accepted": 54,
+    "max_objective_difference_accepted": 0.010078365152139668,
+    "max_float_primal_violation_accepted": 0.0044316725880015895
+  },
+  {
+    "threshold": 50000,
+    "kind": "feasible_convex_interpolation",
+    "total": 87,
+    "accepted": 20,
+    "max_objective_difference_accepted": 0.07825716690120998,
+    "max_float_primal_violation_accepted": 7.76428999316181e-07
+  },
+  {
+    "threshold": 50000,
+    "kind": "negative_multiplier_only",
+    "total": 63,
+    "accepted": 51,
+    "max_objective_difference_accepted": 1.8032586694971542e-06,
+    "max_float_primal_violation_accepted": 7.875149918845636e-07
+  },
+  {
+    "threshold": 50000,
+    "kind": "normal_numerical_solution",
+    "total": 3,
+    "accepted": 3,
+    "max_objective_difference_accepted": 1.8032586694971542e-06,
+    "max_float_primal_violation_accepted": 7.875149918845636e-07
+  },
+  {
+    "threshold": 50000,
+    "kind": "primal_direction_perturbation",
+    "total": 63,
+    "accepted": 59,
+    "max_objective_difference_accepted": 0.01806357335476605,
+    "max_float_primal_violation_accepted": 0.01316134416799919
+  }
+]

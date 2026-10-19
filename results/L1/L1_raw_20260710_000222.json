@@ -1,0 +1,147 @@
+{
+  "experiment": "EXP-1-L1-SmallNoise",
+  "noise_levels": [
+    0.01,
+    0.03,
+    0.05
+  ],
+  "kkt_tol": 10000,
+  "mask_scale": 1000000,
+  "attack_results": [
+    {
+      "iter": 10,
+      "attack_level": "L1",
+      "noise_pct": 0.01,
+      "noise_pct_str": "1%",
+      "park": "Park1",
+      "solver": "Park2",
+      "verifier": "Park3",
+      "k0": 220,
+      "y_star_norm": 233.486956,
+      "delta_y_norm": 2.33487,
+      "relative_err": 0.01,
+      "y_star_0": 7.498756,
+      "y_noisy_0": 7.423769,
+      "delta_y_0": -0.074988,
+      "baseline_stat": 1137,
+      "baseline_compl": 21,
+      "baseline_pass": true,
+      "kkt_pass": false,
+      "stat_res": 644873,
+      "compl_res": 562084,
+      "stat_over_tol": 64.49,
+      "solution_hash": "c67c9a26d4250e978a67a34d7d9c33f1dd070dba9a38620ff581e3406bc0966d",
+      "solve_credit_after": 100,
+      "rho": 0.5,
+      "credit_before": {
+        "Park1": 100,
+        "Park2": 100,
+        "Park3": 100
+      },
+      "credit_after_all": {
+        "Park1": 100,
+        "Park2": 100,
+        "Park3": 100
+      },
+      "scheduleID": "SCHEDULE_9994-M7C-20260709-234144-1pct-abb6",
+      "credits_init": {
+        "Park1": 100,
+        "Park2": 100,
+        "Park3": 100
+      },
+      "coord_step_blocked": true,
+      "coord_error": "invoke ADMMCoordinationContract:CoordinateStep failed\nstdout: \nstderr: Error: endorsement failure during invoke. response: status:500 message:\"missing iteration record for Park1 iter 10: state ITER_SCHEDULE_9994-M7C-20260709-234144-1pct-abb6_10_Park1 not found\"",
+      "iter_record_exists": false
+    },
+    {
+      "iter": 10,
+      "attack_level": "L1",
+      "noise_pct": 0.03,
+      "noise_pct_str": "3%",
+      "park": "Park1",
+      "solver": "Park2",
+      "verifier": "Park3",
+      "k0": 220,
+      "y_star_norm": 233.486956,
+      "delta_y_norm": 7.004609,
+      "relative_err": 0.03,
+      "y_star_0": 7.498756,
+      "y_noisy_0": 7.273794,
+      "delta_y_0": -0.224963,
+      "baseline_stat": 1137,
+      "baseline_compl": 21,
+      "baseline_pass": true,
+      "kkt_pass": false,
+      "stat_res": 1955211,
+      "compl_res": 902392,
+      "stat_over_tol": 195.52,
+      "solution_hash": "450f1001fbe4324c67a737bef25235cbb1ac3a03395cef615a7cd8f44238574c",
+      "solve_credit_after": 100,
+      "rho": 0.5,
+      "credit_before": {
+        "Park1": 100,
+        "Park2": 100,
+        "Park3": 100
+      },
+      "credit_after_all": {
+        "Park1": 100,
+        "Park2": 100,
+        "Park3": 100
+      },
+      "scheduleID": "SCHEDULE_9994-M7C-20260709-234903-3pct-2c82",
+      "credits_init": {
+        "Park1": 100,
+        "Park2": 90,
+        "Park3": 100
+      },
+      "coord_step_blocked": true,
+      "coord_error": "invoke ADMMCoordinationContract:CoordinateStep failed\nstdout: \nstderr: Error: endorsement failure during invoke. response: status:500 message:\"missing iteration record for Park1 iter 10: state ITER_SCHEDULE_9994-M7C-20260709-234903-3pct-2c82_10_Park1 not found\"",
+      "iter_record_exists": false
+    },
+    {
+      "iter": 10,
+      "attack_level": "L1",
+      "noise_pct": 0.05,
+      "noise_pct_str": "5%",
+      "park": "Park1",
+      "solver": "Park2",
+      "verifier": "Park3",
+      "k0": 220,
+      "y_star_norm": 233.486956,
+      "delta_y_norm": 11.674348,
+      "relative_err": 0.05,
+      "y_star_0": 7.498756,
+      "y_noisy_0": 7.873694,
+      "delta_y_0": 0.374938,
+      "baseline_stat": 1137,
+      "baseline_compl": 21,
+      "baseline_pass": true,
+      "kkt_pass": false,
+      "stat_res": 2977395,
+      "compl_res": 2326946,
+      "stat_over_tol": 297.74,
+      "solution_hash": "a159546cd2e34fdaf4ebe9e72f0abe7f462dc56a4d74ecee28f74ea8c326989e",
+      "solve_credit_after": 100,
+      "rho": 0.5,
+      "credit_before": {
+        "Park1": 100,
+        "Park2": 100,
+        "Park3": 100
+      },
+      "credit_after_all": {
+        "Park1": 100,
+        "Park2": 100,
+        "Park3": 100
+      },
+      "scheduleID": "SCHEDULE_9994-M7C-20260709-235600-5pct-ad3c",
+      "credits_init": {
+        "Park1": 100,
+        "Park2": 92,
+        "Park3": 100
+      },
+      "coord_step_blocked": true,
+      "coord_error": "invoke ADMMCoordinationContract:CoordinateStep failed\nstdout: \nstderr: Error: endorsement failure during invoke. response: status:500 message:\"missing iteration record for Park1 iter 10: state ITER_SCHEDULE_9994-M7C-20260709-235600-5pct-ad3c_10_Park1 not found\"",
+      "iter_record_exists": false
+    }
+  ]
+}
